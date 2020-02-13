@@ -122,7 +122,7 @@ $idMil = $_SESSION['cpf_mil'];
 
 </thead>
 
-  <?php $result_Registro = "SELECT  * FROM tbl_os WHERE os_status='Aberta'ORDER BY  os_prioridade DESC LIMIT 0,7 ";
+  <?php $result_Registro = "SELECT  * FROM tbl_os WHERE os_status='Aberta' OR os_status='Em Andamento' ORDER BY  os_prioridade DESC LIMIT 0,7 ";
 
        $resultado_Registro = mysqli_query($conn, $result_Registro);                  
 
@@ -139,6 +139,9 @@ $idMil = $_SESSION['cpf_mil'];
          $color = warning;
        } if($dado["os_prioridade"] == 'Urgentissimo'){
         $color = danger;
+      }if($dado["os_status"] == 'Em Andamento'){
+        $color = info;
+       
       }
        
        ?>
